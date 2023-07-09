@@ -17,31 +17,31 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"zobinhuang.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":180,"display":"post","padding":10,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"zhuhxi.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":180,"display":"post","padding":10,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="img{margin-left: 20px; margin-right: 20px;}     #table th{text-align:center;}     #table td{text-align:center;}     p{margin-left: 15px; margin-right: 15px;}     .div_concurrent_img{padding: 10p">
 <meta property="og:type" content="website">
 <meta property="og:title" content="程序为什么分段？又是怎么分段的？">
-<meta property="og:url" content="https://zobinhuang.github.io/sec_learning_backup/Tech_OS_And_Linux_Kernel/Assembly_4_Segment/index.html">
+<meta property="og:url" content="https://zhuhxi.github.io/sec_learning_backup/Tech_OS_And_Linux_Kernel/Assembly_4_Segment/index.html">
 <meta property="og:site_name" content="Zobin">
 <meta property="og:description" content="img{margin-left: 20px; margin-right: 20px;}     #table th{text-align:center;}     #table td{text-align:center;}     p{margin-left: 15px; margin-right: 15px;}     .div_concurrent_img{padding: 10p">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png">
-<meta property="og:image" content="https://zobinhuang.github.io/sec_learning_backup/Tech_OS_And_Linux_Kernel/Assembly_4_Segment/pic/xxx.png">
-<meta property="og:image" content="https://zobinhuang.github.io/sec_learning_backup/Tech_OS_And_Linux_Kernel/Assembly_4_Segment/pic/addr_space.svg">
+<meta property="og:image" content="https://zhuhxi.github.io/sec_learning_backup/Tech_OS_And_Linux_Kernel/Assembly_4_Segment/pic/xxx.png">
+<meta property="og:image" content="https://zhuhxi.github.io/sec_learning_backup/Tech_OS_And_Linux_Kernel/Assembly_4_Segment/pic/addr_space.svg">
 <meta property="article:published_time" content="2022-02-10T14:39:09.773Z">
 <meta property="article:modified_time" content="2021-09-07T12:09:29.000Z">
-<meta property="article:author" content="Zhuobin Huang">
+<meta property="article:author" content="zhuhxi">
 <meta property="article:tag" content="Zobin">
 <meta property="article:tag" content="黄卓彬">
-<meta property="article:tag" content="zobinHuang">
+<meta property="article:tag" content="zhuhxi">
 <meta property="article:tag" content="网络工程">
 <meta property="article:tag" content="Networking Engineering">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png">
 
-<link rel="canonical" href="https://zobinhuang.github.io/sec_learning_backup/Tech_OS_And_Linux_Kernel/Assembly_4_Segment/">
+<link rel="canonical" href="https://zhuhxi.github.io/sec_learning_backup/Tech_OS_And_Linux_Kernel/Assembly_4_Segment/">
 
 
 <script id="page-configurations">
@@ -241,7 +241,7 @@
 <body>
 
 <div align="center" class="div_indicate_source">
-  <h4>⚠ 转载请注明出处：<font color="red"><i>作者：ZobinHuang，更新日期：Jan.30 2021</i></font></h4>
+  <h4>⚠ 转载请注明出处：<font color="red"><i>作者：zhuhxi，更新日期：Jan.30 2021</i></font></h4>
 </div>
 
 <div class="div_licence">
@@ -250,7 +250,7 @@
       <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="知识共享许可协议" style="border-width:0; margin-left: 20px; margin-right: 20px;" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a>
   </div>
   <p>
-  &nbsp;&nbsp;&nbsp;&nbsp;本<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">作品</span>由 <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName"><b>ZobinHuang</b></span> 采用 <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><font color="red">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</font></a> 进行许可，在进行使用或分享前请查看权限要求。若发现侵权行为，会采取法律手段维护作者正当合法权益，谢谢配合。
+  &nbsp;&nbsp;&nbsp;&nbsp;本<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">作品</span>由 <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName"><b>zhuhxi</b></span> 采用 <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><font color="red">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</font></a> 进行许可，在进行使用或分享前请查看权限要求。若发现侵权行为，会采取法律手段维护作者正当合法权益，谢谢配合。
   </p>
 </div>
 
@@ -323,7 +323,7 @@
 
   <h3><a name="1_motivation_1">1.1 程序在内存中的重定位问题</a></h3>
 
-  <figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; 一段 NASM 代码</span></span><br><span class="line"><span class="meta">SECTION</span> code <span class="meta">align</span>=<span class="number">16</span> vstart=<span class="number">0</span></span><br><span class="line"><span class="symbol">  start:</span>  </span><br><span class="line">    <span class="comment">; 假设 DS 寄存器已经指向 SECTION data </span></span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">bx</span>, msg0</span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">byte</span> <span class="built_in">ptr</span> <span class="built_in">ax</span>, [<span class="built_in">ds</span>:<span class="built_in">bx</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment">; 计算程序的长度</span></span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">bx</span>, <span class="meta">segment</span><span class="number">.</span>code<span class="number">.</span>start</span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">dx</span>, program_end</span><br><span class="line">    <span class="keyword">sub</span> <span class="built_in">bx</span>, <span class="built_in">dx</span></span><br><span class="line"></span><br><span class="line"><span class="meta">SECTION</span> data <span class="meta">align</span>=<span class="number">16</span> vstart=<span class="number">0</span></span><br><span class="line">        <span class="built_in">db</span> <span class="string">&#x27;  Welcome to zobinHuang! &#x27;</span></span><br><span class="line">  msg0  <span class="built_in">db</span> <span class="string">&#x27;  This is NASM - the famous Netwide Assembler. &#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">SECTION</span> stack <span class="meta">align</span>=<span class="number">16</span> vstart=<span class="number">0</span></span><br><span class="line">  <span class="built_in">resb</span> <span class="number">256</span></span><br><span class="line"></span><br><span class="line"><span class="meta">SECTION</span> end <span class="meta">align</span>=<span class="number">16</span>:</span><br><span class="line"><span class="symbol">  program_end:</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; 一段 NASM 代码</span></span><br><span class="line"><span class="meta">SECTION</span> code <span class="meta">align</span>=<span class="number">16</span> vstart=<span class="number">0</span></span><br><span class="line"><span class="symbol">  start:</span>  </span><br><span class="line">    <span class="comment">; 假设 DS 寄存器已经指向 SECTION data </span></span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">bx</span>, msg0</span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">byte</span> <span class="built_in">ptr</span> <span class="built_in">ax</span>, [<span class="built_in">ds</span>:<span class="built_in">bx</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment">; 计算程序的长度</span></span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">bx</span>, <span class="meta">segment</span><span class="number">.</span>code<span class="number">.</span>start</span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">dx</span>, program_end</span><br><span class="line">    <span class="keyword">sub</span> <span class="built_in">bx</span>, <span class="built_in">dx</span></span><br><span class="line"></span><br><span class="line"><span class="meta">SECTION</span> data <span class="meta">align</span>=<span class="number">16</span> vstart=<span class="number">0</span></span><br><span class="line">        <span class="built_in">db</span> <span class="string">&#x27;  Welcome to zhuhxi! &#x27;</span></span><br><span class="line">  msg0  <span class="built_in">db</span> <span class="string">&#x27;  This is NASM - the famous Netwide Assembler. &#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">SECTION</span> stack <span class="meta">align</span>=<span class="number">16</span> vstart=<span class="number">0</span></span><br><span class="line">  <span class="built_in">resb</span> <span class="number">256</span></span><br><span class="line"></span><br><span class="line"><span class="meta">SECTION</span> end <span class="meta">align</span>=<span class="number">16</span>:</span><br><span class="line"><span class="symbol">  program_end:</span></span><br></pre></td></tr></table></figure>
   <p>
   &nbsp;&nbsp;&nbsp;&nbsp;不知道各位读者有没有思考过：当我们在汇编程序中使用标号 (e.g. 上面程序中的 msg0) 时，编译器在编译的时候会帮助我们把这些标号转义为一个具体的地址放在机器码中。那么编译器是如何翻译的呢？
 
@@ -450,14 +450,14 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Zhuobin Huang"
+    <img class="site-author-image" itemprop="image" alt="zhuhxi"
       src="/images/avatar_2.png">
-  <p class="site-author-name" itemprop="name">Zhuobin Huang</p>
+  <p class="site-author-name" itemprop="name">zhuhxi</p>
   <div class="site-description" itemprop="description">System Engineer</div>
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/zobinHuang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zobinHuang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/zhuhxi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zhuhxi" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
         <a href="mailto:zobin1999@gmail.com" title="E-Mail → mailto:zobin1999@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
@@ -493,7 +493,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Zhuobin Huang</span>
+  <span class="author" itemprop="copyrightHolder">zhuhxi</span>
 </div>
 
         

@@ -53,7 +53,7 @@ for pic in *.png; do
 
     # 加第一层水印: 背景灰色水印
     convert -size $grey_wm_interval_width_height -font Times-New-Roman -pointsize $grey_wm_width xc:none -fill grey \
-        -gravity NorthWest -annotate +10x10 "Zhuobin Huang" \
+        -gravity NorthWest -annotate +10x10 "zhuhxi" \
         -gravity SouthEast -annotate +10x10 "zobin1999@gmail.com" \
         miff:- |\
     composite -tile - $pic  ./watermark/$pic
@@ -61,7 +61,7 @@ for pic in *.png; do
     # 加第二层水印: 右侧 @ 水印
     convert ./watermark/$pic  -font Arial -pointsize $pink_wm_width \
         -draw "gravity northeast \
-                fill pink text 0,12 'Pic By @Zhuobin Huang' "\
+                fill pink text 0,12 'Pic By @zhuhxi' "\
         ./watermark/$pic
 done
 
@@ -103,7 +103,7 @@ for pic in *.jpg; do
 
     # 加第一层水印: 背景灰色水印
     convert -size $grey_wm_interval_width_height -font Times-New-Roman -pointsize $grey_wm_width xc:none -fill grey \
-        -gravity NorthWest -annotate +10x10 "Zhuobin Huang" \
+        -gravity NorthWest -annotate +10x10 "zhuhxi" \
         -gravity SouthEast -annotate +10x10 "zobin1999@gmail.com" \
         miff:- |\
     composite -tile - $pic  ./watermark/$pic
@@ -111,6 +111,6 @@ for pic in *.jpg; do
     # 加第二层水印: 右侧 @ 水印
     convert ./watermark/$pic  -font Arial -pointsize $pink_wm_width \
         -draw "gravity northeast \
-                fill pink text 0,12 'Pic By @Zhuobin Huang' "\
+                fill pink text 0,12 'Pic By @zhuhxi' "\
         ./watermark/$pic
 done

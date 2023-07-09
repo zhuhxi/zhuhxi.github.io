@@ -3,14 +3,14 @@
   <title>Zobin</title>
   
   <subtitle>Lovin&#39; Tech with Tea</subtitle>
-  <link href="https://zobinhuang.github.io/atom.xml" rel="self"/>
+  <link href="https://zhuhxi.github.io/atom.xml" rel="self"/>
   
-  <link href="https://zobinhuang.github.io/"/>
+  <link href="https://zhuhxi.github.io/"/>
   <updated>2021-09-07T12:09:20.000Z</updated>
-  <id>https://zobinhuang.github.io/</id>
+  <id>https://zhuhxi.github.io/</id>
   
   <author>
-    <name>Zhuobin Huang</name>
+    <name>zhuhxi</name>
     
   </author>
   
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://zobinhuang.github.io/2021/09/07/hello-world/"/>
-    <id>https://zobinhuang.github.io/2021/09/07/hello-world/</id>
+    <link href="https://zhuhxi.github.io/2021/09/07/hello-world/"/>
+    <id>https://zhuhxi.github.io/2021/09/07/hello-world/</id>
     <published>2021-09-07T12:09:20.000Z</published>
     <updated>2021-09-07T12:09:20.000Z</updated>
     
@@ -38,8 +38,8 @@
   
   <entry>
     <title>test_my_site</title>
-    <link href="https://zobinhuang.github.io/2021/01/05/test-my-site/"/>
-    <id>https://zobinhuang.github.io/2021/01/05/test-my-site/</id>
+    <link href="https://zhuhxi.github.io/2021/01/05/test-my-site/"/>
+    <id>https://zhuhxi.github.io/2021/01/05/test-my-site/</id>
     <published>2021-01-04T16:13:36.000Z</published>
     <updated>2021-11-28T14:36:17.701Z</updated>
     

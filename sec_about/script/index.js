@@ -318,7 +318,7 @@ async function _load_papers(){
                 let paper_authors = document.createElement("span")
                 paper_authors.setAttribute("class", "paper_occur_authors")
                 let authors_string = `${paper.authors}`
-                authors_string = _bold_query(authors_string, "Zhuobin Huang")
+                authors_string = _bold_query(authors_string, "zhuhxi")
                 paper_authors.innerHTML = `${authors_string}`
                 paper_entry_2_row.append(paper_authors)
 

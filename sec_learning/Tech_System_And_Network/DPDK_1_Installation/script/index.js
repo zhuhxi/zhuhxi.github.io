@@ -63,7 +63,7 @@ async function _show_catalogue(){
         <!-- Content -->
         <div class="base_block_content_container indicate_source_block_content_container">
             <ul>
-                <li><entry_title>作者</entry_title>: Zhuobin Huang</li>
+                <li><entry_title>作者</entry_title>: zhuhxi</li>
                 <li><entry_title>日期</entry_title>: Sept.19 2022</li>
                 <li><entry_title>版权声明</entry_title>: 著作权归作者所有，商业转载请联系作者获得授权，非商业转载请注明出处，违者必究。</li>
                 <li><entry_title>本文链接</entry_title>: </li>

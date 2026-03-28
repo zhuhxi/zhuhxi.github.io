@@ -8,18 +8,21 @@
   <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
   <style>
     :root {
-      --bg: #0b1020;
+      --bg: #09101d;
       --bg2: #111827;
-      --panel: rgba(255,255,255,0.06);
+      --panel: rgba(255,255,255,0.055);
+      --panel-strong: rgba(255,255,255,0.08);
       --line: rgba(255,255,255,0.10);
       --text: #eef2ff;
       --muted: rgba(238,242,255,0.74);
-      --soft: rgba(238,242,255,0.55);
+      --soft: rgba(238,242,255,0.52);
       --blue: #93c5fd;
       --cyan: #67e8f9;
       --purple: #c4b5fd;
-      --thumb1: linear-gradient(135deg, rgba(124,58,237,.45), rgba(6,182,212,.28));
-      --thumb2: linear-gradient(135deg, rgba(59,130,246,.35), rgba(147,197,253,.12));
+      --green: #86efac;
+      --thumb1: linear-gradient(135deg, rgba(124,58,237,.42), rgba(6,182,212,.24));
+      --thumb2: linear-gradient(135deg, rgba(59,130,246,.34), rgba(147,197,253,.12));
+      --thumb3: linear-gradient(135deg, rgba(16,185,129,.28), rgba(103,232,249,.18));
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -29,20 +32,21 @@
       color: var(--text);
       background:
         radial-gradient(circle at top left, rgba(124,58,237,0.18), transparent 30%),
-        radial-gradient(circle at top right, rgba(6,182,212,0.16), transparent 28%),
+        radial-gradient(circle at top right, rgba(6,182,212,0.14), transparent 26%),
+        radial-gradient(circle at 50% 0%, rgba(59,130,246,0.12), transparent 34%),
         linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
     }
     .wrap {
-      width: min(1160px, calc(100vw - 32px));
+      width: min(1180px, calc(100vw - 32px));
       margin: 0 auto;
-      padding: 28px 0 80px;
+      padding: 28px 0 86px;
     }
     .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      margin-bottom: 40px;
+      margin-bottom: 34px;
       padding: 6px 2px;
     }
     .brand {
@@ -52,13 +56,17 @@
       text-transform: uppercase;
     }
     .hero {
-      padding: 40px 0 22px;
+      padding: 34px 0 18px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 28px;
+      align-items: end;
     }
     .hero h1 {
       margin: 0;
-      font-size: clamp(52px, 8vw, 92px);
-      line-height: 0.96;
-      letter-spacing: -0.05em;
+      font-size: clamp(56px, 8vw, 98px);
+      line-height: 0.94;
+      letter-spacing: -0.055em;
     }
     .hero p {
       margin: 20px 0 0;
@@ -67,21 +75,61 @@
       line-height: 1.75;
       color: var(--muted);
     }
-    .hero .note {
-      margin-top: 22px;
+    .hero-note {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 24px;
+      padding: 22px;
       color: var(--soft);
+      line-height: 1.8;
       font-size: 15px;
-      letter-spacing: 0.02em;
+      backdrop-filter: blur(12px);
+    }
+    .hero-note strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--green);
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .top-tags {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .top-tags span {
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 13px;
+      color: var(--purple);
     }
     .section {
-      margin-top: 44px;
+      margin-top: 50px;
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 18px;
     }
     .section h2 {
-      margin: 0 0 18px;
+      margin: 0;
       font-size: 22px;
       color: var(--blue);
       letter-spacing: 0.02em;
       font-weight: 600;
+    }
+    .section .sub {
+      color: var(--soft);
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 560px;
+      text-align: right;
     }
     .grid {
       display: grid;
@@ -92,9 +140,19 @@
       border: 1px solid var(--line);
       background: var(--panel);
       backdrop-filter: blur(12px);
-      border-radius: 26px;
+      border-radius: 28px;
       padding: 24px;
       box-shadow: 0 18px 48px rgba(0,0,0,0.18);
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(147,197,253,.55), rgba(103,232,249,.0));
     }
     .card h3 {
       margin: 0 0 12px;
@@ -127,7 +185,7 @@
     }
     .video-item {
       display: grid;
-      grid-template-columns: 108px 1fr;
+      grid-template-columns: 112px 1fr;
       gap: 14px;
       align-items: stretch;
       text-decoration: none;
@@ -136,17 +194,30 @@
       background: rgba(255,255,255,0.03);
       border-radius: 18px;
       overflow: hidden;
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
     }
     .video-item:hover {
       transform: translateY(-2px);
       border-color: rgba(103,232,249,0.35);
       background: rgba(255,255,255,0.05);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.16);
     }
     .thumb {
-      min-height: 92px;
+      min-height: 94px;
       background: var(--thumb1);
       position: relative;
+    }
+    .thumb.alt { background: var(--thumb2); }
+    .thumb.alt2 { background: var(--thumb3); }
+    .thumb::before {
+      content: "Douyin";
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
     .thumb::after {
       content: "▶";
@@ -156,7 +227,6 @@
       font-size: 18px;
       color: rgba(255,255,255,0.9);
     }
-    .thumb.alt { background: var(--thumb2); }
     .meta {
       padding: 12px 14px 12px 0;
       display: flex;
@@ -173,23 +243,32 @@
       margin-top: 6px;
       color: var(--soft);
       font-size: 13px;
-      line-height: 1.5;
+      line-height: 1.55;
     }
     .footer {
-      margin-top: 52px;
-      padding-top: 24px;
+      margin-top: 56px;
+      padding-top: 26px;
       border-top: 1px solid var(--line);
       color: var(--soft);
       font-size: 14px;
       line-height: 1.8;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; }
+      .section .sub { text-align: left; }
+      .section-head { align-items: start; flex-direction: column; }
     }
     @media (max-width: 860px) {
       .grid { grid-template-columns: 1fr; }
       .hero p { max-width: none; }
     }
     @media (max-width: 560px) {
-      .video-item { grid-template-columns: 92px 1fr; }
-      .thumb { min-height: 84px; }
+      .video-item { grid-template-columns: 96px 1fr; }
+      .thumb { min-height: 86px; }
     }
   </style>
 </head>
@@ -200,16 +279,33 @@
     </div>
 
     <section class="hero">
-      <h1>Topics I keep exploring.</h1>
-      <p>
-        This page is a small map of things I keep returning to — ideas, tools, research directions,
-        and everyday interests that shape how I learn and think.
-      </p>
-      <div class="note">Simple, selective, and still growing.</div>
+      <div>
+        <h1>Topics I keep exploring.</h1>
+        <p>
+          This page is a small map of things I keep returning to — ideas, tools, research directions,
+          and everyday interests that shape how I learn and think.
+        </p>
+        <div class="top-tags">
+          <span>AI &amp; LLM</span>
+          <span>Machine Learning</span>
+          <span>Reinforcement Learning</span>
+          <span>Algorithms</span>
+          <span>Research &amp; EIT</span>
+          <span>Books &amp; Travel</span>
+        </div>
+      </div>
+      <aside class="hero-note">
+        <strong>About this page</strong>
+        Not a full biography. Not a portfolio in the formal sense. Just a quieter, cleaner way to collect the topics,
+        videos, and ideas I actually keep coming back to.
+      </aside>
     </section>
 
     <section class="section">
-      <h2>Interests</h2>
+      <div class="section-head">
+        <h2>Interests</h2>
+        <div class="sub">A topic-based homepage with selective links, short notes, and a cleaner visual rhythm.</div>
+      </div>
       <div class="grid">
         <article class="card">
           <h3>AI &amp; LLM</h3>
@@ -223,12 +319,10 @@
           <div class="video-list">
             <a class="video-item" href="https://v.douyin.com/5zmIV5Vqq_k/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>OpenClaw without API</strong><span>Using Codex (GPT EDU) as the model source.</span></div></a>
             <a class="video-item" href="https://v.douyin.com/0Q1h29huf_U/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>LLM Reasoning — practical walkthrough</strong><span>Reasoning ideas explained through practical examples.</span></div></a>
-            <a class="video-item" href="https://v.douyin.com/R7DXKF4sQuk/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>LLM Reasoning</strong><span>A compact take on how reasoning shows up in large models.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/R7DXKF4sQuk/" target="_blank" rel="noopener noreferrer"><div class="thumb alt2"></div><div class="meta"><strong>LLM Reasoning</strong><span>A compact take on how reasoning shows up in large models.</span></div></a>
             <a class="video-item" href="https://v.douyin.com/6UpTPkxPUWo/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>Prompt Engineering</strong><span>Making large models better understand human intent.</span></div></a>
             <a class="video-item" href="https://v.douyin.com/AOANPxo7UY4/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>When large models fail on simple visual blocks</strong><span>A look at the limits of model understanding.</span></div></a>
-            <a class="video-item" href="https://v.douyin.com/kjKzCaR5itk/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>Text classification with large models</strong><span>From vector representation to generative answers.</span></div></a>
-            <a class="video-item" href="https://v.douyin.com/dpdnyzPKygg/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>How a sentence becomes vectors</strong><span>A simple intuition for language representation.</span></div></a>
-            <a class="video-item" href="https://v.douyin.com/G0BVrYK12eE/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>The foundations of large language models</strong><span>A cleaner look at the core layer underneath the hype.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/kjKzCaR5itk/" target="_blank" rel="noopener noreferrer"><div class="thumb alt2"></div><div class="meta"><strong>Text classification with large models</strong><span>From vector representation to generative answers.</span></div></a>
           </div>
         </article>
 
@@ -244,10 +338,10 @@
           <div class="video-list">
             <a class="video-item" href="https://v.douyin.com/mmppowc0Uhc/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>Backpropagation</strong><span>An intuitive walkthrough of how gradients update a model.</span></div></a>
             <a class="video-item" href="https://v.douyin.com/vz31QE9G9HY/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>SVM</strong><span>A clean entry point into margin-based classification.</span></div></a>
-            <a class="video-item" href="https://v.douyin.com/Iv4u6jbpyyA/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>Matrices, eigenvalues, and eigenvectors</strong><span>One pass to understand the structure behind the terms.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/Iv4u6jbpyyA/" target="_blank" rel="noopener noreferrer"><div class="thumb alt2"></div><div class="meta"><strong>Matrices, eigenvalues, and eigenvectors</strong><span>One pass to understand the structure behind the terms.</span></div></a>
             <a class="video-item" href="https://v.douyin.com/bjoJelr73TE/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>Fourier transform explained in one go</strong><span>A useful intuition builder for signals and models.</span></div></a>
             <a class="video-item" href="https://v.douyin.com/2fAyOywEyWQ/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>From Embedding to BERTopic</strong><span>How thousands of papers can be grouped into topics automatically.</span></div></a>
-            <a class="video-item" href="https://v.douyin.com/hqewm7fjgNw/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>A PyTorch template for cleaner experiments</strong><span>A practical workflow for organizing deep learning runs.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/hqewm7fjgNw/" target="_blank" rel="noopener noreferrer"><div class="thumb alt2"></div><div class="meta"><strong>A PyTorch template for cleaner experiments</strong><span>A practical workflow for organizing deep learning runs.</span></div></a>
           </div>
         </article>
 
@@ -263,7 +357,7 @@
           <div class="video-list">
             <a class="video-item" href="https://v.douyin.com/b1JWa4rxDQk/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>PPO vs. traditional neural networks</strong><span>The key difference in how reinforcement learning changes the game.</span></div></a>
             <a class="video-item" href="https://v.douyin.com/YmTiBuVPWs8/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>The Bellman equation</strong><span>A tiny step with very large consequences.</span></div></a>
-            <a class="video-item" href="https://v.douyin.com/1WwKndBTbwU/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>Learning reinforcement learning with Mario</strong><span>Turning a game into a teacher for intuition.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/1WwKndBTbwU/" target="_blank" rel="noopener noreferrer"><div class="thumb alt2"></div><div class="meta"><strong>Learning reinforcement learning with Mario</strong><span>Turning a game into a teacher for intuition.</span></div></a>
           </div>
         </article>
 
@@ -279,7 +373,7 @@
           <div class="video-list">
             <a class="video-item" href="https://v.douyin.com/C_F_Dsea-qs/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>Red-black tree</strong><span>Balanced structure without overcomplicating the intuition.</span></div></a>
             <a class="video-item" href="https://v.douyin.com/0whkhV3oi2c/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>Binary search tree</strong><span>A core structure explained in a lighter way.</span></div></a>
-            <a class="video-item" href="https://v.douyin.com/mxUgmy8natA/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>Hash table</strong><span>One of the most useful ideas in programming made simple.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/mxUgmy8natA/" target="_blank" rel="noopener noreferrer"><div class="thumb alt2"></div><div class="meta"><strong>Hash table</strong><span>One of the most useful ideas in programming made simple.</span></div></a>
             <a class="video-item" href="https://v.douyin.com/s_D1KqlK23Y/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>Quick sort</strong><span>One partition, three things solved at once.</span></div></a>
           </div>
         </article>
@@ -296,7 +390,7 @@
           <div class="video-list">
             <a class="video-item" href="https://v.douyin.com/nuONNYrio6w/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>EIT introduction</strong><span>A simple starting point for understanding the field.</span></div></a>
             <a class="video-item" href="https://v.douyin.com/DKOBxis5EzY/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>How GREIT redefined EIT reconstruction standards</strong><span>A clearer way to think about reconstruction quality.</span></div></a>
-            <a class="video-item" href="https://v.douyin.com/_bR4h_bfEJo/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>Explosive detection work during PhD</strong><span>A window into applied research during doctoral study.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/_bR4h_bfEJo/" target="_blank" rel="noopener noreferrer"><div class="thumb alt2"></div><div class="meta"><strong>Explosive detection work during PhD</strong><span>A window into applied research during doctoral study.</span></div></a>
             <a class="video-item" href="https://v.douyin.com/J0_2UKoq5dM/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>Meeting Professor Wuqiang Yang at Khalifa</strong><span>A moment of academic humility, inspiration, and perspective.</span></div></a>
           </div>
         </article>
@@ -313,17 +407,18 @@
           <div class="video-list">
             <a class="video-item" href="https://v.douyin.com/l4fxe9N6Nnk/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>A spontaneous road trip in Oman</strong><span>A last-minute trip that turned into a box full of surprises.</span></div></a>
             <a class="video-item" href="https://v.douyin.com/0SCFAq6YsKg/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>A beach barbecue day in Abu Dhabi</strong><span>A slower day by the sea, made memorable by simple things.</span></div></a>
-            <a class="video-item" href="https://v.douyin.com/MFevmCb3V5s/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>The joy of sports on an off night</strong><span>Missing shots, but still finding why movement matters.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/MFevmCb3V5s/" target="_blank" rel="noopener noreferrer"><div class="thumb alt2"></div><div class="meta"><strong>The joy of sports on an off night</strong><span>Missing shots, but still finding why movement matters.</span></div></a>
             <a class="video-item" href="https://v.douyin.com/oLeDZGTOtJk/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>Night of chasing the Milky Way</strong><span>A small reminder that wonder is still easy to find.</span></div></a>
             <a class="video-item" href="https://v.douyin.com/VGHAGoB7HhM/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>Quiet Flows the Don</strong><span>A reading note on scale, stillness, and life under history.</span></div></a>
-            <a class="video-item" href="https://v.douyin.com/zAtYdoOhBKA/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>War and Peace</strong><span>A book that keeps opening larger questions than it answers.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/zAtYdoOhBKA/" target="_blank" rel="noopener noreferrer"><div class="thumb alt2"></div><div class="meta"><strong>War and Peace</strong><span>A book that keeps opening larger questions than it answers.</span></div></a>
           </div>
         </article>
       </div>
     </section>
 
     <section class="footer">
-      A quiet index of interests, projects, and things worth keeping.
+      <span>A quiet index of interests, projects, and things worth keeping.</span>
+      <span>More links and real thumbnails can be added over time.</span>
     </section>
   </main>
 </body>

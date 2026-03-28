@@ -1,100 +1,273 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home</title>
-  <meta name="description" content="Personal homepage" />
+  <title>Hongxi Zhu</title>
+  <meta name="description" content="A small place for topics I keep exploring." />
   <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
   <style>
     :root {
       --bg: #0b1020;
-      --panel: rgba(255,255,255,0.08);
+      --bg2: #111827;
+      --panel: rgba(255,255,255,0.06);
+      --line: rgba(255,255,255,0.10);
       --text: #eef2ff;
-      --muted: #a5b4fc;
-      --line: rgba(255,255,255,0.12);
-      --accent: #7c3aed;
-      --accent2: #06b6d4;
+      --muted: rgba(238,242,255,0.72);
+      --soft: rgba(238,242,255,0.55);
+      --blue: #93c5fd;
+      --cyan: #67e8f9;
+      --purple: #c4b5fd;
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", sans-serif;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(124,58,237,0.25), transparent 30%),
-        radial-gradient(circle at 80% 30%, rgba(6,182,212,0.2), transparent 28%),
-        linear-gradient(180deg, #0b1020 0%, #111827 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "PingFang SC", sans-serif;
       color: var(--text);
-      display: grid;
-      place-items: center;
-      overflow: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(124,58,237,0.18), transparent 30%),
+        radial-gradient(circle at top right, rgba(6,182,212,0.16), transparent 28%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
     }
     .wrap {
-      width: min(920px, calc(100vw - 32px));
-      padding: 24px;
+      width: min(1120px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 72px;
     }
-    .card {
-      border: 1px solid var(--line);
-      background: var(--panel);
-      backdrop-filter: blur(16px);
-      border-radius: 28px;
-      padding: 48px 40px;
-      box-shadow: 0 20px 80px rgba(0,0,0,0.35);
-    }
-    .eyebrow {
-      margin: 0 0 20px;
-      font-size: 14px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    h1 {
-      margin: 0;
-      font-size: clamp(44px, 8vw, 88px);
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-    }
-    .sub {
-      margin: 18px 0 0;
-      font-size: clamp(16px, 2vw, 22px);
-      color: rgba(238,242,255,0.78);
-      line-height: 1.7;
-      max-width: 580px;
-    }
-    .line {
-      margin: 36px 0;
-      height: 1px;
-      background: var(--line);
-    }
-    .footer {
+    .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      color: rgba(238,242,255,0.62);
-      font-size: 14px;
+      margin-bottom: 44px;
+      padding: 6px 2px;
     }
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 20px rgba(124,58,237,0.8);
+    .brand {
+      font-size: 15px;
+      color: var(--purple);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .hero {
+      padding: 42px 0 26px;
+    }
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(52px, 8vw, 94px);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+    }
+    .hero p {
+      margin: 20px 0 0;
+      max-width: 760px;
+      font-size: clamp(18px, 2.2vw, 24px);
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .hero .note {
+      margin-top: 28px;
+      color: var(--soft);
+      font-size: 15px;
+      letter-spacing: 0.02em;
+    }
+    .section {
+      margin-top: 44px;
+    }
+    .section h2 {
+      margin: 0 0 18px;
+      font-size: 22px;
+      color: var(--blue);
+      letter-spacing: 0.02em;
+      font-weight: 600;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      backdrop-filter: blur(12px);
+      border-radius: 24px;
+      padding: 24px;
+      min-height: 248px;
+      box-shadow: 0 18px 48px rgba(0,0,0,0.18);
+    }
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 28px;
+      line-height: 1.15;
+    }
+    .card p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 13px;
+      color: var(--purple);
+    }
+    .links {
+      display: grid;
+      gap: 10px;
+    }
+    .links a {
+      text-decoration: none;
+      color: var(--cyan);
+      font-size: 15px;
+      line-height: 1.6;
+      border-bottom: 1px dashed rgba(103,232,249,0.2);
+      padding-bottom: 8px;
+    }
+    .links a:hover {
+      color: #a5f3fc;
+      border-bottom-color: rgba(165,243,252,0.45);
+    }
+    .footer {
+      margin-top: 52px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      color: var(--soft);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+      .hero p { max-width: none; }
     }
   </style>
 </head>
 <body>
   <main class="wrap">
-    <section class="card">
-      <p class="eyebrow">Personal Website</p>
-      <h1>Hello.</h1>
-      <p class="sub">A simple homepage is live here for now. Content can be added later.</p>
-      <div class="line"></div>
-      <div class="footer">
-        <span>Coming soon</span>
-        <span class="dot"></span>
+    <div class="nav">
+      <div class="brand">Hongxi Zhu</div>
+    </div>
+
+    <section class="hero">
+      <h1>Topics I keep exploring.</h1>
+      <p>
+        This page is a small map of things I keep returning to — ideas, tools, research directions,
+        and everyday interests that shape how I learn and think.
+      </p>
+      <div class="note">Simple, selective, and still growing.</div>
+    </section>
+
+    <section class="section">
+      <h2>Interests</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>AI &amp; LLM</h3>
+          <p>Large language models, reasoning, embeddings, transformers, and practical AI tools.</p>
+          <div class="tags">
+            <span class="tag">LLM reasoning</span>
+            <span class="tag">embedding</span>
+            <span class="tag">transformer</span>
+            <span class="tag">agents</span>
+          </div>
+          <div class="links">
+            <a href="#">Video link placeholder</a>
+            <a href="#">Video link placeholder</a>
+            <a href="#">Reading / note placeholder</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Machine Learning</h3>
+          <p>Backpropagation, model intuition, optimization, text understanding, and applied ML ideas.</p>
+          <div class="tags">
+            <span class="tag">backpropagation</span>
+            <span class="tag">SVM</span>
+            <span class="tag">classification</span>
+            <span class="tag">intuition</span>
+          </div>
+          <div class="links">
+            <a href="#">Video link placeholder</a>
+            <a href="#">Video link placeholder</a>
+            <a href="#">Reference placeholder</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Reinforcement Learning</h3>
+          <p>Decision-making, PPO, exploration, policy learning, and how agents improve through interaction.</p>
+          <div class="tags">
+            <span class="tag">PPO</span>
+            <span class="tag">policy learning</span>
+            <span class="tag">exploration</span>
+            <span class="tag">RL</span>
+          </div>
+          <div class="links">
+            <a href="#">Video link placeholder</a>
+            <a href="#">Video link placeholder</a>
+            <a href="#">Project note placeholder</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Algorithms &amp; Systems</h3>
+          <p>Trees, hashing, dynamic programming, sorting, and the mental models behind computational structure.</p>
+          <div class="tags">
+            <span class="tag">red-black tree</span>
+            <span class="tag">hash table</span>
+            <span class="tag">dynamic programming</span>
+            <span class="tag">systems</span>
+          </div>
+          <div class="links">
+            <a href="#">Video link placeholder</a>
+            <a href="#">Video link placeholder</a>
+            <a href="#">Algorithm note placeholder</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Research &amp; EIT</h3>
+          <p>Research communication, EIT-related topics, experiments, and the process of turning ideas into structure.</p>
+          <div class="tags">
+            <span class="tag">EIT</span>
+            <span class="tag">GREIT</span>
+            <span class="tag">research notes</span>
+            <span class="tag">talks</span>
+          </div>
+          <div class="links">
+            <a href="#">Video link placeholder</a>
+            <a href="#">Video link placeholder</a>
+            <a href="#">Research note placeholder</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Beyond Work</h3>
+          <p>Books, basketball, travel, food, and the small things that make the technical parts more human.</p>
+          <div class="tags">
+            <span class="tag">books</span>
+            <span class="tag">basketball</span>
+            <span class="tag">travel</span>
+            <span class="tag">daily thoughts</span>
+          </div>
+          <div class="links">
+            <a href="#">Video link placeholder</a>
+            <a href="#">Moment / note placeholder</a>
+            <a href="#">Another link placeholder</a>
+          </div>
+        </article>
       </div>
+    </section>
+
+    <section class="footer">
+      A quiet index of interests, projects, and things worth keeping.
     </section>
   </main>
 </body>

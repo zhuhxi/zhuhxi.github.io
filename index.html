@@ -13,11 +13,13 @@
       --panel: rgba(255,255,255,0.06);
       --line: rgba(255,255,255,0.10);
       --text: #eef2ff;
-      --muted: rgba(238,242,255,0.72);
+      --muted: rgba(238,242,255,0.74);
       --soft: rgba(238,242,255,0.55);
       --blue: #93c5fd;
       --cyan: #67e8f9;
       --purple: #c4b5fd;
+      --thumb1: linear-gradient(135deg, rgba(124,58,237,.45), rgba(6,182,212,.28));
+      --thumb2: linear-gradient(135deg, rgba(59,130,246,.35), rgba(147,197,253,.12));
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -31,16 +33,16 @@
         linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
     }
     .wrap {
-      width: min(1120px, calc(100vw - 32px));
+      width: min(1160px, calc(100vw - 32px));
       margin: 0 auto;
-      padding: 28px 0 72px;
+      padding: 28px 0 80px;
     }
     .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      margin-bottom: 44px;
+      margin-bottom: 40px;
       padding: 6px 2px;
     }
     .brand {
@@ -50,11 +52,11 @@
       text-transform: uppercase;
     }
     .hero {
-      padding: 42px 0 26px;
+      padding: 40px 0 22px;
     }
     .hero h1 {
       margin: 0;
-      font-size: clamp(52px, 8vw, 94px);
+      font-size: clamp(52px, 8vw, 92px);
       line-height: 0.96;
       letter-spacing: -0.05em;
     }
@@ -66,7 +68,7 @@
       color: var(--muted);
     }
     .hero .note {
-      margin-top: 28px;
+      margin-top: 22px;
       color: var(--soft);
       font-size: 15px;
       letter-spacing: 0.02em;
@@ -90,9 +92,8 @@
       border: 1px solid var(--line);
       background: var(--panel);
       backdrop-filter: blur(12px);
-      border-radius: 24px;
+      border-radius: 26px;
       padding: 24px;
-      min-height: 248px;
       box-shadow: 0 18px 48px rgba(0,0,0,0.18);
     }
     .card h3 {
@@ -120,21 +121,59 @@
       font-size: 13px;
       color: var(--purple);
     }
-    .links {
+    .video-list {
       display: grid;
-      gap: 10px;
+      gap: 12px;
     }
-    .links a {
+    .video-item {
+      display: grid;
+      grid-template-columns: 108px 1fr;
+      gap: 14px;
+      align-items: stretch;
       text-decoration: none;
-      color: var(--cyan);
-      font-size: 15px;
-      line-height: 1.6;
-      border-bottom: 1px dashed rgba(103,232,249,0.2);
-      padding-bottom: 8px;
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
     }
-    .links a:hover {
-      color: #a5f3fc;
-      border-bottom-color: rgba(165,243,252,0.45);
+    .video-item:hover {
+      transform: translateY(-2px);
+      border-color: rgba(103,232,249,0.35);
+      background: rgba(255,255,255,0.05);
+    }
+    .thumb {
+      min-height: 92px;
+      background: var(--thumb1);
+      position: relative;
+    }
+    .thumb::after {
+      content: "▶";
+      position: absolute;
+      right: 10px;
+      bottom: 8px;
+      font-size: 18px;
+      color: rgba(255,255,255,0.9);
+    }
+    .thumb.alt { background: var(--thumb2); }
+    .meta {
+      padding: 12px 14px 12px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .meta strong {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #f8fafc;
+      font-weight: 600;
+    }
+    .meta span {
+      margin-top: 6px;
+      color: var(--soft);
+      font-size: 13px;
+      line-height: 1.5;
     }
     .footer {
       margin-top: 52px;
@@ -147,6 +186,10 @@
     @media (max-width: 860px) {
       .grid { grid-template-columns: 1fr; }
       .hero p { max-width: none; }
+    }
+    @media (max-width: 560px) {
+      .video-item { grid-template-columns: 92px 1fr; }
+      .thumb { min-height: 84px; }
     }
   </style>
 </head>
@@ -177,19 +220,15 @@
             <span class="tag">transformer</span>
             <span class="tag">agents</span>
           </div>
-          <div class="links">
-            <a href="https://v.douyin.com/5zmIV5Vqq_k/" target="_blank" rel="noopener noreferrer">OpenClaw without API — using Codex (GPT EDU) as the model source</a>
-            <a href="#">LLM Reasoning in practice</a>
-            <a href="https://v.douyin.com/0Q1h29huf_U/" target="_blank" rel="noopener noreferrer">LLM Reasoning — practical walkthrough</a>
-            <a href="https://v.douyin.com/R7DXKF4sQuk/" target="_blank" rel="noopener noreferrer">LLM Reasoning</a>
-            <a href="https://v.douyin.com/6UpTPkxPUWo/" target="_blank" rel="noopener noreferrer">Prompt Engineering: making LLMs understand human intent</a>
-            <a href="https://v.douyin.com/AOANPxo7UY4/" target="_blank" rel="noopener noreferrer">Why can a large model fail on simple visual blocks?</a>
-            <a href="https://v.douyin.com/kjKzCaR5itk/" target="_blank" rel="noopener noreferrer">Text classification with large models</a>
-            <a href="https://v.douyin.com/dpdnyzPKygg/" target="_blank" rel="noopener noreferrer">How a sentence becomes vectors</a>
-            <a href="https://v.douyin.com/G0BVrYK12eE/" target="_blank" rel="noopener noreferrer">The foundations of large language models</a>
-            <a href="https://v.douyin.com/vLAPkXSbB7o/" target="_blank" rel="noopener noreferrer">Understand what is inside a large model in 10 minutes</a>
-            <a href="https://v.douyin.com/-pZmpI_VlUo/" target="_blank" rel="noopener noreferrer">Three key ideas behind LLM decoding</a>
-            <a href="https://v.douyin.com/YMBkLD4sNNo/" target="_blank" rel="noopener noreferrer">CARE Transformer</a>
+          <div class="video-list">
+            <a class="video-item" href="https://v.douyin.com/5zmIV5Vqq_k/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>OpenClaw without API</strong><span>Using Codex (GPT EDU) as the model source.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/0Q1h29huf_U/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>LLM Reasoning — practical walkthrough</strong><span>Reasoning ideas explained through practical examples.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/R7DXKF4sQuk/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>LLM Reasoning</strong><span>A compact take on how reasoning shows up in large models.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/6UpTPkxPUWo/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>Prompt Engineering</strong><span>Making large models better understand human intent.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/AOANPxo7UY4/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>When large models fail on simple visual blocks</strong><span>A look at the limits of model understanding.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/kjKzCaR5itk/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>Text classification with large models</strong><span>From vector representation to generative answers.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/dpdnyzPKygg/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>How a sentence becomes vectors</strong><span>A simple intuition for language representation.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/G0BVrYK12eE/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>The foundations of large language models</strong><span>A cleaner look at the core layer underneath the hype.</span></div></a>
           </div>
         </article>
 
@@ -202,17 +241,13 @@
             <span class="tag">classification</span>
             <span class="tag">intuition</span>
           </div>
-          <div class="links">
-            <a href="#">Video link placeholder</a>
-            <a href="#">Backpropagation</a>
-            <a href="https://v.douyin.com/mmppowc0Uhc/" target="_blank" rel="noopener noreferrer">Backpropagation</a>
-            <a href="https://v.douyin.com/vz31QE9G9HY/" target="_blank" rel="noopener noreferrer">SVM</a>
-            <a href="https://v.douyin.com/Iv4u6jbpyyA/" target="_blank" rel="noopener noreferrer">Matrices, eigenvalues, and eigenvectors</a>
-            <a href="https://v.douyin.com/bjoJelr73TE/" target="_blank" rel="noopener noreferrer">Fourier transform explained in one go</a>
-            <a href="https://v.douyin.com/4-CkSzbUIF8/" target="_blank" rel="noopener noreferrer">Machine learning competition trends in 2025</a>
-            <a href="https://v.douyin.com/2fAyOywEyWQ/" target="_blank" rel="noopener noreferrer">From Embedding to BERTopic</a>
-            <a href="https://v.douyin.com/yqH2o22d_IU/" target="_blank" rel="noopener noreferrer">Reducing parameters with hypercomplex convolution</a>
-            <a href="https://v.douyin.com/hqewm7fjgNw/" target="_blank" rel="noopener noreferrer">A PyTorch template for cleaner experiments</a>
+          <div class="video-list">
+            <a class="video-item" href="https://v.douyin.com/mmppowc0Uhc/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>Backpropagation</strong><span>An intuitive walkthrough of how gradients update a model.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/vz31QE9G9HY/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>SVM</strong><span>A clean entry point into margin-based classification.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/Iv4u6jbpyyA/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>Matrices, eigenvalues, and eigenvectors</strong><span>One pass to understand the structure behind the terms.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/bjoJelr73TE/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>Fourier transform explained in one go</strong><span>A useful intuition builder for signals and models.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/2fAyOywEyWQ/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>From Embedding to BERTopic</strong><span>How thousands of papers can be grouped into topics automatically.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/hqewm7fjgNw/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>A PyTorch template for cleaner experiments</strong><span>A practical workflow for organizing deep learning runs.</span></div></a>
           </div>
         </article>
 
@@ -225,12 +260,10 @@
             <span class="tag">exploration</span>
             <span class="tag">RL</span>
           </div>
-          <div class="links">
-            <a href="#">Video link placeholder</a>
-            <a href="#">PPO and how it differs from traditional neural networks</a>
-            <a href="https://v.douyin.com/b1JWa4rxDQk/" target="_blank" rel="noopener noreferrer">PPO vs. traditional neural networks</a>
-            <a href="https://v.douyin.com/YmTiBuVPWs8/" target="_blank" rel="noopener noreferrer">The Bellman equation</a>
-            <a href="https://v.douyin.com/1WwKndBTbwU/" target="_blank" rel="noopener noreferrer">Learning reinforcement learning with Mario</a>
+          <div class="video-list">
+            <a class="video-item" href="https://v.douyin.com/b1JWa4rxDQk/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>PPO vs. traditional neural networks</strong><span>The key difference in how reinforcement learning changes the game.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/YmTiBuVPWs8/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>The Bellman equation</strong><span>A tiny step with very large consequences.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/1WwKndBTbwU/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>Learning reinforcement learning with Mario</strong><span>Turning a game into a teacher for intuition.</span></div></a>
           </div>
         </article>
 
@@ -243,13 +276,11 @@
             <span class="tag">dynamic programming</span>
             <span class="tag">systems</span>
           </div>
-          <div class="links">
-            <a href="#">Video link placeholder</a>
-            <a href="#">Red-black tree</a>
-            <a href="https://v.douyin.com/C_F_Dsea-qs/" target="_blank" rel="noopener noreferrer">Red-black tree</a>
-            <a href="https://v.douyin.com/0whkhV3oi2c/" target="_blank" rel="noopener noreferrer">Binary search tree</a>
-            <a href="https://v.douyin.com/mxUgmy8natA/" target="_blank" rel="noopener noreferrer">Hash table</a>
-            <a href="https://v.douyin.com/s_D1KqlK23Y/" target="_blank" rel="noopener noreferrer">Quick sort</a>
+          <div class="video-list">
+            <a class="video-item" href="https://v.douyin.com/C_F_Dsea-qs/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>Red-black tree</strong><span>Balanced structure without overcomplicating the intuition.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/0whkhV3oi2c/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>Binary search tree</strong><span>A core structure explained in a lighter way.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/mxUgmy8natA/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>Hash table</strong><span>One of the most useful ideas in programming made simple.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/s_D1KqlK23Y/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>Quick sort</strong><span>One partition, three things solved at once.</span></div></a>
           </div>
         </article>
 
@@ -262,14 +293,11 @@
             <span class="tag">research notes</span>
             <span class="tag">talks</span>
           </div>
-          <div class="links">
-            <a href="#">Video link placeholder</a>
-            <a href="#">EIT introduction</a>
-            <a href="https://v.douyin.com/nuONNYrio6w/" target="_blank" rel="noopener noreferrer">EIT introduction</a>
-            <a href="https://v.douyin.com/DKOBxis5EzY/" target="_blank" rel="noopener noreferrer">How GREIT redefined EIT reconstruction standards</a>
-            <a href="https://v.douyin.com/_bR4h_bfEJo/" target="_blank" rel="noopener noreferrer">Explosive detection work during PhD</a>
-            <a href="https://v.douyin.com/Ef0qqZbzs8M/" target="_blank" rel="noopener noreferrer">Tsinghua × Khalifa joint PhD program</a>
-            <a href="https://v.douyin.com/J0_2UKoq5dM/" target="_blank" rel="noopener noreferrer">Meeting Professor Wuqiang Yang at Khalifa</a>
+          <div class="video-list">
+            <a class="video-item" href="https://v.douyin.com/nuONNYrio6w/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>EIT introduction</strong><span>A simple starting point for understanding the field.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/DKOBxis5EzY/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>How GREIT redefined EIT reconstruction standards</strong><span>A clearer way to think about reconstruction quality.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/_bR4h_bfEJo/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>Explosive detection work during PhD</strong><span>A window into applied research during doctoral study.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/J0_2UKoq5dM/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>Meeting Professor Wuqiang Yang at Khalifa</strong><span>A moment of academic humility, inspiration, and perspective.</span></div></a>
           </div>
         </article>
 
@@ -282,20 +310,13 @@
             <span class="tag">travel</span>
             <span class="tag">daily thoughts</span>
           </div>
-          <div class="links">
-            <a href="#">A spontaneous road trip in Oman</a>
-            <a href="https://v.douyin.com/l4fxe9N6Nnk/" target="_blank" rel="noopener noreferrer">A spontaneous road trip in Oman</a>
-            <a href="https://v.douyin.com/0SCFAq6YsKg/" target="_blank" rel="noopener noreferrer">A beach barbecue day in Abu Dhabi</a>
-            <a href="https://v.douyin.com/X5WiTxH-Qu8/" target="_blank" rel="noopener noreferrer">A Korean barbecue place in Abu Dhabi</a>
-            <a href="https://v.douyin.com/DFjATFom3s8/" target="_blank" rel="noopener noreferrer">Back home: eating everything I missed</a>
-            <a href="https://v.douyin.com/MOpGbupOmPE/" target="_blank" rel="noopener noreferrer">Favorite comfort-food dishes</a>
-            <a href="https://v.douyin.com/MFevmCb3V5s/" target="_blank" rel="noopener noreferrer">The joy of sports on an off night</a>
-            <a href="https://v.douyin.com/oLeDZGTOtJk/" target="_blank" rel="noopener noreferrer">Night of chasing the Milky Way</a>
-            <a href="https://v.douyin.com/VGHAGoB7HhM/" target="_blank" rel="noopener noreferrer">Quiet Flows the Don</a>
-            <a href="https://v.douyin.com/zAtYdoOhBKA/" target="_blank" rel="noopener noreferrer">War and Peace</a>
-            <a href="https://v.douyin.com/VwrSqgJh7VA/" target="_blank" rel="noopener noreferrer">The Razor's Edge</a>
-            <a href="https://v.douyin.com/DopokJ8TFXM/" target="_blank" rel="noopener noreferrer">On beauty and sorrow</a>
-            <a href="https://v.douyin.com/yDNbZySJR-E/" target="_blank" rel="noopener noreferrer">Teahouse</a>
+          <div class="video-list">
+            <a class="video-item" href="https://v.douyin.com/l4fxe9N6Nnk/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>A spontaneous road trip in Oman</strong><span>A last-minute trip that turned into a box full of surprises.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/0SCFAq6YsKg/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>A beach barbecue day in Abu Dhabi</strong><span>A slower day by the sea, made memorable by simple things.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/MFevmCb3V5s/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>The joy of sports on an off night</strong><span>Missing shots, but still finding why movement matters.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/oLeDZGTOtJk/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>Night of chasing the Milky Way</strong><span>A small reminder that wonder is still easy to find.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/VGHAGoB7HhM/" target="_blank" rel="noopener noreferrer"><div class="thumb"></div><div class="meta"><strong>Quiet Flows the Don</strong><span>A reading note on scale, stillness, and life under history.</span></div></a>
+            <a class="video-item" href="https://v.douyin.com/zAtYdoOhBKA/" target="_blank" rel="noopener noreferrer"><div class="thumb alt"></div><div class="meta"><strong>War and Peace</strong><span>A book that keeps opening larger questions than it answers.</span></div></a>
           </div>
         </article>
       </div>
